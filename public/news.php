@@ -49,17 +49,20 @@ Modification History:
             <div class="col-sm-12 col-md-11">
                 <?php foreach ($news as $newsItem): ?>
                     <div class="row">
+                        <div class="col-sm-12">
+                        <h1><?php echo $newsItem->newsTitle ?></h1>
+                        </div>
+                    </div>
+                    <div class="row">
                         <div class="col-sm-12 col-md-4">
-                            <h1><?php echo $newsItem->newsTitle ?></h1>
                             <img class="img-responsive" src="<?php echo $newsItem->imageURL ?>">
                         </div>
                         <div class="col-sm-12 col-md-8">
-                            <h1>&nbsp;</h1>
                             <p><?php echo $newsItem->newsContent ?></p>
                             <a href="<?php echo $newsItem->linkAddress ?>"><?php echo $newsItem->linkTitle ?></a>
                         </div>
                     </div>
-                <hr>
+                    <hr>
                 <?php endforeach; ?>
             </div>
         </div>
