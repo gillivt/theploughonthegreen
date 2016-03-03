@@ -65,6 +65,8 @@
                                 <li id="events"><a href="/ThePloughOnTheGreen2/public/events.php">Events</a></li>
                                 <li id="contactus"><a href="/ThePloughOnTheGreen2/public/contactus.php">Contact Us</a></li>
                                 <li id="gallery"><a href="/ThePloughOnTheGreen2/public/gallery.php">Gallery</a></li>
+                            </ul>
+                            <ul class="nav navbar-nav pull-right">
                                 <li id="admin"><a href="/ThePloughOnTheGreen2/public/admin/admin.php">Admin</a></li>
                             </ul>
                         </div>
