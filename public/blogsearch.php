@@ -14,7 +14,8 @@ $pagination = new Pagination($page, $per_page, $total_count);
 if (isset($_GET['search'])) {
     $search= $db->escape_value($_GET['search']);
     $sql = "SELECT * FROM news ";
-    $sql .= "WHERE newsTitle like '%" . $search . "%'";
+    $sql .= "WHERE newsTitle LIKE '%" . $search . "%' ";
+    $sql .= "ORDER BY date DESC";    
     $news = News::find_by_sql($sql);
 } else {
     redirect_to("news.php");
