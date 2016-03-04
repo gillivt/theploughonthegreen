@@ -29,13 +29,13 @@ include_layout_template("header.php");
         <div class="row">
             <div class="col-sm-12 col-md-1">
                 <br><br>
-                <a href="https://www.facebook.com/The-Plough-Ashby-De-La-Zouch-1409446652610698/"><img class="img-responsive" src="assets/images/facebook.png" alt="facebook"></a>
+                <a href="https://www.facebook.com/The-Plough-Ashby-De-La-Zouch-1409446652610698/"><img data-toggle="tooltip" title="Find us on Facebook" class="img-responsive" src="assets/images/facebook.png" alt="facebook"></a>
             </div>
           
             <div id="blogsearch" class="col-sm-0 col-md-2">
                 <form method="GET" action="blogsearch.php" role="search">
                     <div class="input-group">
-                        <input type="text" class="form-control" name="search" placeholder="Search for blog post">
+                        <input data-toggle="tooltip" title="enter a blog title or part of one e.g. 'sam'" type="text" class="form-control" name="search" placeholder="Search for blog post">
                         <span class="input-group-btn">
                             <button type="submit" class="btn btn-primary">
                                 <span class="glyphicon glyphicon-search"></span>

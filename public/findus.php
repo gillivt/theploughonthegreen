@@ -20,7 +20,7 @@ Modification History:
         <div class="row">
              <div class="col-sm-12 col-md-1">
                 <br><br>
-                <a href="https://www.facebook.com/The-Plough-Ashby-De-La-Zouch-1409446652610698/"><img class="img-responsive" src="assets/images/facebook.png" alt="facebook"></a>
+                <a href="https://www.facebook.com/The-Plough-Ashby-De-La-Zouch-1409446652610698/"><img data-toggle="tooltip" title="Find us on Facebook" class="img-responsive" src="assets/images/facebook.png" alt="facebook"></a>
             </div>
            
             <div class="col-md-3 col-sm-12"><h1>Find Us</h1>           
