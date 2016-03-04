@@ -1,6 +1,5 @@
 <?php
 require_once("../database/initialize.php");
-
 // 1. the current page number ($current_page)
 $page = !empty($_GET['page']) ? (int) $_GET['page'] : 1;
 
@@ -12,33 +11,17 @@ $total_count = News::count_all();
 
 $pagination = new Pagination($page, $per_page, $total_count);
 
-// Instead of finding all records, just find the records 
-// for this page
-$sql = "SELECT * FROM news ";
-$sql .= "ORDER BY date DESC ";
-$sql .= "LIMIT {$per_page} ";
-$sql .= "OFFSET {$pagination->offset()}";
-$news = News::find_by_sql($sql);
-
-// Need to add ?page=$page to all links we want to 
-// maintain the current page (or store $page in $session)
-
+if (isset($_GET['search'])) {
+    $search= $db->escape_value($_GET['search']);
+    $sql = "SELECT * FROM news ";
+    $sql .= "WHERE newsTitle like '%" . $search . "%'";
+    $news = News::find_by_sql($sql);
+} else {
+    redirect_to("news.php");
+}
 
 include_layout_template("header.php");
 ?>
-<!--
-File: news.php
-
-Copyright © 2016 Terry Gilliver <terry@comp-solutions.org.uk> - Computer Solutions
-
-Created: 26-Jan-2016 16:41:31
-
-Purpose: News Page
-
-
-Modification History:
-
--->
 
 <main>
     <div class="container-fluid">
@@ -51,7 +34,7 @@ Modification History:
             <div id="blogsearch" class="col-sm-0 col-md-2">
                 <form method="GET" action="blogsearch.php" role="search">
                     <div class="input-group">
-                        <input type="text" name="search" class="form-control" placeholder="Search for blog post">
+                        <input type="text" class="form-control" name="search" placeholder="Search for blog post">
                         <span class="input-group-btn">
                             <button type="submit" class="btn btn-primary">
                                 <span class="glyphicon glyphicon-search"></span>
@@ -60,14 +43,6 @@ Modification History:
                     </div>
                 </form> 
                 <br>
-<!--                <div class="form-group">
-                    <div class="input-group date" id="datetimepicker1">
-                        <input type="text" class="form-control" />
-                        <span class="input-group-addon">
-                            <span class="glyphicon glyphicon-calendar"></span>
-                        </span>
-                    </div>
-                </div>-->
             </div>
           
             <div class="col-sm-12 col-md-9">
@@ -95,7 +70,7 @@ Modification History:
             if ($pagination->total_pages() > 1) {
 
                 if ($pagination->has_previous_page()) {
-                    echo "<a class=\"btn btn-primary\" role=\"button\" href=\"news.php?page=";
+                    echo "<a class=\"btn btn-primary\" role=\"button\" href=\"blogsearch.php?page=";
                     echo $pagination->previous_page();
                     echo "\">&laquo; Previous</a> ";
                 }
@@ -104,12 +79,12 @@ Modification History:
                     if ($i == $page) {
                         echo " <span class=\"selected\">{$i}</span> ";
                     } else {
-                        echo " <a class=\"btn btn-primary\" role=\"button\" href=\"news.php?page={$i}\">{$i}</a> ";
+                        echo " <a class=\"btn btn-primary\" role=\"button\" href=\"blogsearch.php?page={$i}\">{$i}</a> ";
                     }
                 }
 
                 if ($pagination->has_next_page()) {
-                    echo " <a class=\"btn btn-primary\" role=\"button\" href=\"news.php?page=";
+                    echo " <a class=\"btn btn-primary\" role=\"button\" href=\"blogsearch.php?page=";
                     echo $pagination->next_page();
                     echo "\">Next &raquo;</a> ";
                 }
@@ -121,15 +96,6 @@ Modification History:
 
     </div>
 </main>
-
-<!--<script type="text/javascript">
-    $(document).ready(function () {
-        $("#datetimepicker1").datetimepicker({
-            locale: 'en-gb'
-        });
-    });
-</script>-->
-
 
 <script src="assets/js/news.js"></script>
 <?php

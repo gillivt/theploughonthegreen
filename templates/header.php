@@ -22,6 +22,7 @@
         <title>The Plough On the Green - About Us</title>
         <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
         <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.37/css/bootstrap-datetimepicker.css">
         <link rel="stylesheet" href="/ThePloughOntheGreen2/public/assets/css/styles.css">
         <link rel="stylesheet" href="/ThePloughOntheGreen2/public/assets/css/showhidepass.css">
         <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -33,6 +34,8 @@
         <!-- Javascripts -->
         <script src="http://code.jquery.com/jquery.js"></script>
         <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.11.2/moment-with-locales.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.37/js/bootstrap-datetimepicker.min.js"></script>
         <script src="/ThePloughOnTheGreen2/public/assets/js/resizemain.js"></script>
     </head>
     <body>
@@ -61,8 +64,8 @@
                                 <li id="index" class="active"><a href="/ThePloughOnTheGreen2/public/index.php">About Us</a></li>
                                 <li id="findus"><a href="/ThePloughOntheGreen2/public/findus.php">Find Us</a></li>
                                 <li id="menus"><a href="/ThePloughOntheGreen2/public/menus.php">Menus</a></li>
-                                <li id="news"><a href="/ThePloughOnTheGreen2/public/news.php">News</a></li>
-                                <li id="events"><a href="/ThePloughOnTheGreen2/public/events.php">Events</a></li>
+                                <li id="news"><a href="/ThePloughOnTheGreen2/public/news.php">Blog</a></li>
+<!--                                <li id="events"><a href="/ThePloughOnTheGreen2/public/events.php">Events</a></li>-->
                                 <li id="contactus"><a href="/ThePloughOnTheGreen2/public/contactus.php">Contact Us</a></li>
                                 <li id="gallery"><a href="/ThePloughOnTheGreen2/public/gallery.php">Gallery</a></li>
                             </ul>

@@ -114,4 +114,8 @@ table, tr, td, tr {
   font-weight: bold;
   color: #8D0D19; }
 
-/*# sourceMappingURL=styles.css.map */
+#blogsearch {
+  padding-top: 70px; }
+
+#datetimepicker1 {
+  margin: 0 -15px 0 -15px; }
