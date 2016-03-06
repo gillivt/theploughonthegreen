@@ -8,7 +8,7 @@ $page = !empty($_GET['page']) ? (int) $_GET['page'] : 1;
 $per_page = 6;
 
 // 3. total record count ($total_count)
-$total_count = Photograph::count_all();
+$total_count = GalleryPhotos::count_all();
 
 
 // Find all photos
@@ -19,10 +19,10 @@ $pagination = new Pagination($page, $per_page, $total_count);
 
 // Instead of finding all records, just find the records 
 // for this page
-$sql = "SELECT * FROM photographs ";
+$sql = "SELECT * FROM galleryPhotos ";
 $sql .= "LIMIT {$per_page} ";
 $sql .= "OFFSET {$pagination->offset()}";
-$photos = Photograph::find_by_sql($sql);
+$photos = GalleryPhotos::find_by_sql($sql);
 
 // Need to add ?page=$page to all links we want to 
 // maintain the current page (or store $page in $session)
@@ -52,9 +52,9 @@ Modification History:
                     <div style="float: left; margin-left: 20px; width:200px; height:300px;">
                         <div style="margin: 0; padding: 0; border: 0; width: 200px; max-height: 275px; overflow: hidden;">
                             <a href="photo.php?id=<?php echo $photo->id; ?>">
+                                <img class="img-thumbnail" src="<?php echo $photo->image_path(); ?>" alt="<?php echo 'thumbnail of ' . $photo->caption ?>">
+                            </a>
                         </div>
-                            <img class="img-thumbnail" src="<?php echo $photo->image_path(); ?>">
-                        </a>
                         <p><?php echo $photo->caption; ?></p>
                     </div>
                 <?php endforeach; ?>

@@ -5,7 +5,7 @@ if (empty($_GET['id'])) {
     redirect_to('gallery.php');
 }
 
-$photo = Photograph::find_by_id($_GET['id']);
+$photo = GalleryPhotos::find_by_id($_GET['id']);
 if (!$photo) {
     $session->message("The photo could not be located.");
     redirect_to('gallery.php');

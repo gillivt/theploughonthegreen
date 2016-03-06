@@ -19,17 +19,17 @@ require_once(LIB_PATH.DS.'config.php');
 require_once(LIB_PATH.DS.'functions.php');
 
 // load core objects
-require_once(LIB_PATH.DS.'session.php');
-require_once(LIB_PATH.DS.'database.php');
-require_once(LIB_PATH.DS.'database_object.php');
-require_once(LIB_PATH.DS.'pagination.php');
-require_once(LIB_PATH.DS."phpMailer".DS."class.phpmailer.php");
-require_once(LIB_PATH.DS."phpMailer".DS."class.smtp.php");
+require_once(LIB_PATH.DS.'class.session.php');
+require_once(LIB_PATH.DS.'class.database.php');
+require_once(LIB_PATH.DS.'class.database_object.php');
+require_once(LIB_PATH.DS.'class.pagination.php');
+require_once(LIB_PATH.DS."PHPMailer".DS."class.phpmailer.php");
+require_once(LIB_PATH.DS."PHPMailer".DS."class.smtp.php");
 //require_once(LIB_PATH.DS."phpMailer".DS."language".DS."phpmailer.lang-en.php");
 
 // load database-related classes
-require_once(LIB_PATH.DS.'user.php');
-require_once(LIB_PATH.DS.'photograph.php');
-require_once(LIB_PATH.DS.'comment.php');
+require_once(LIB_PATH.DS.'class.user.php');
+require_once(LIB_PATH.DS.'class.galleryphotos.php');
+require_once(LIB_PATH.DS.'class.comment.php');
 
 ?>

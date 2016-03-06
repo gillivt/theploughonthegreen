@@ -27,7 +27,7 @@ Modification History:
    * Open eye means "show," closed eye means "hide."
    */
 .hideShowPassword-toggle {
-    background-image: url(../assets/images/wink.svg);
+    background-image: url(../../assets/images/wink.svg);
     background-position: 0 center;
     background-repeat: no-repeat;
     cursor: pointer;

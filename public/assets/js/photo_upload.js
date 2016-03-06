@@ -19,7 +19,7 @@ var validatorOptions = {
         image : function($el) {
             var filePath = $el.val().trim();
             var fileName = filePath.replace(/^.*[\\\/]/, '');
-            var pattern = new RegExp("^[A-Za-z0-9 \.\-_]+(.jpg|.png|.gif)$");
+            var pattern = new RegExp("^[A-Za-z0-9 ._-]+(.jpg|.png|.gif)$","i");
             var testResult = pattern.test(fileName);
             return testResult;
         }

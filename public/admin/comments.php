@@ -10,7 +10,7 @@ if (empty($_GET['id'])) {
     redirect_to('admin.php');
 }
 
-$photo = Photograph::find_by_id($_GET['id']);
+$photo = GalleryPhotos::find_by_id($_GET['id']);
 if (!$photo) {
     $session->message("The photo could not be located.");
     redirect_to('admin.php');
@@ -23,7 +23,7 @@ $comments = $photo->comments();
     <div class="container-fluid">
         <div class="row">
             <div class="col-sm-12 text"><h1>Comments</h1>
-                <a class="btn btn-default" role="button" href="list_photos.php">&laquo; Back</a><br><br>
+                <a class="btn btn-primary" role="button" href="listgalleryphotos.php">&laquo; Back</a><br><br>
                 <h2>Comments on <?php echo $photo->filename; ?></h2>
                 <?php echo output_message($message); ?>
                 <div id="comments">

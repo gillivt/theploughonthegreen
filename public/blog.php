@@ -1,5 +1,17 @@
 <?php
 require_once("../database/initialize.php");
+/******************************************************************************
+/* File: blog.php
+/*
+/* Copyright © 2016 Terry Gilliver <terry@comp-solutions.org.uk> - Computer Solutions
+/*
+/*Created: 26-Jan-2016 16:41:31
+/*
+/* Purpose: Display Blog
+/*
+/* Modification History:
+/*
+/******************************************************************************/
 // 1. the current page number ($current_page)
 $page = !empty($_GET['page']) ? (int) $_GET['page'] : 1;
 
@@ -11,19 +23,18 @@ $total_count = Blog::count_all();
 
 $pagination = new Pagination($page, $per_page, $total_count);
 
-if (isset($_GET['search'])) {
-    $search= $db->escape_value($_GET['search']);
-    $sql = "SELECT * FROM blog ";
-    $sql .= "WHERE blogTitle LIKE '%" . $search . "%' ";
-    $sql .= "ORDER BY date DESC";    
-    $blog = Blog::find_by_sql($sql);
-} else {
-    redirect_to("blog.php");
-}
+// Instead of finding all records, just find the records 
+// for this page
+$sql = "SELECT * FROM blog ";
+$sql .= "ORDER BY date DESC ";
+$sql .= "LIMIT {$per_page} ";
+$sql .= "OFFSET {$pagination->offset()}";
+$blog = Blog::find_by_sql($sql);
 
+// Need to add ?page=$page to all links we want to 
+// maintain the current page (or store $page in $session)
 include_layout_template("header.php");
 ?>
-
 <main>
     <div class="container-fluid">
         <div class="row">
@@ -35,7 +46,12 @@ include_layout_template("header.php");
             <div id="blogsearch" class="col-sm-0 col-md-2">
                 <form method="GET" action="blogsearch.php" role="search">
                     <div class="input-group">
-                        <input data-toggle="tooltip" title="enter a blog title or part of one e.g. 'sam'" type="text" class="form-control" name="search" placeholder="Search for blog post">
+                        <input data-toggle="tooltip" 
+                               title="enter a blog title or part of one e.g. 'sam'" 
+                               type="text" 
+                               name="search" 
+                               class="form-control" 
+                               placeholder="Search for blog post">
                         <span class="input-group-btn">
                             <button type="submit" class="btn btn-primary">
                                 <span class="glyphicon glyphicon-search"></span>
@@ -44,6 +60,9 @@ include_layout_template("header.php");
                     </div>
                 </form> 
                 <br>
+                <?php foreach ($blog as $blogEntry): ?>
+                <a href="blogsearch.php?search=<?php echo $blogEntry->blogTitle ?>"><?php echo $blogEntry->blogTitle ?></a><br>
+                <?php endforeach; ?>
             </div>
           
             <div class="col-sm-12 col-md-9">
@@ -71,7 +90,7 @@ include_layout_template("header.php");
             if ($pagination->total_pages() > 1) {
 
                 if ($pagination->has_previous_page()) {
-                    echo "<a class=\"btn btn-primary\" role=\"button\" href=\"blogsearch.php?page=";
+                    echo "<a class=\"btn btn-primary\" role=\"button\" href=\"blog.php?page=";
                     echo $pagination->previous_page();
                     echo "\">&laquo; Previous</a> ";
                 }
@@ -80,12 +99,12 @@ include_layout_template("header.php");
                     if ($i == $page) {
                         echo " <span class=\"selected\">{$i}</span> ";
                     } else {
-                        echo " <a class=\"btn btn-primary\" role=\"button\" href=\"blogsearch.php?page={$i}\">{$i}</a> ";
+                        echo " <a class=\"btn btn-primary\" role=\"button\" href=\"blog.php?page={$i}\">{$i}</a> ";
                     }
                 }
 
                 if ($pagination->has_next_page()) {
-                    echo " <a class=\"btn btn-primary\" role=\"button\" href=\"blogsearch.php?page=";
+                    echo " <a class=\"btn btn-primary\" role=\"button\" href=\"blog.php?page=";
                     echo $pagination->next_page();
                     echo "\">Next &raquo;</a> ";
                 }
