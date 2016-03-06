@@ -44,6 +44,9 @@ include_layout_template("header.php");
                     </div>
                 </form> 
                 <br>
+                <?php foreach ($blog as $blogEntry): ?>
+                <a href="blogsearch.php?search=<?php echo $blogEntry->blogTitle ?>"><?php echo $blogEntry->blogTitle ?></a><br>
+                <?php endforeach; ?>
             </div>
           
             <div class="col-sm-12 col-md-9">
