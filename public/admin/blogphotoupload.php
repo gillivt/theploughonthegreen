@@ -12,18 +12,18 @@ $max_file_size = 2097152;   // expressed in bytes (2MB)
 //  10485760 =  10 MB
 
 if (isset($_POST['submit'])) {
-    $photo = new GalleryPhotos();
-    $photo->caption = $_POST['caption'];
-    $photo->attach_file($_FILES['file_upload']);
-    if ($photo->save()) {
+    $blogPhoto = new BlogPhotos();
+    $blogPhoto->description = $_POST['description'];
+    $blogPhoto->attach_file($_FILES['file_upload']);
+    if ($blogPhoto->save()) {
         // Success        
         $session->message("Photograph uploaded successfully.");
         $user = User::find_by_id($session->user_id);
-        log_action("Image Uploaded ".$photo->filename, "By: ".$user->full_name());   
-        redirect_to('listgalleryphotos.php');
+        log_action("Image Uploaded ".$blogPhoto->filename, "By: ".$user->full_name());   
+        redirect_to('listblogphotos.php');
     } else {
         // Failure
-        $message = join("<br />", $photo->errors);
+        $message = join("<br />", $blogPhoto->errors);
     }
 }
 ?>
@@ -33,9 +33,9 @@ if (isset($_POST['submit'])) {
     <div class="container-fluid">
         <div class="row">
             <div class="col-sm-12">
-                <h2>Photo Upload</h2>
+                <h2>Blog Photo Upload</h2>
                 <?php echo output_message($message); ?>
-                <form id="uploadimage" data-toggle="validator" role="form" action="galleryphotoupload.php" enctype="multipart/form-data" method="POST">
+                <form id="uploadimage" data-toggle="validator" role="form" action="blogphotoupload.php" enctype="multipart/form-data" method="POST">
                     <input type="hidden" name="MAX_FILE_SIZE" value="<?php echo $max_file_size; ?>">
                     <fieldset class="form-group">
                         <label class="control-label" for="fileupload">File to Upload</label>
@@ -43,8 +43,8 @@ if (isset($_POST['submit'])) {
                         <span class="help-block with-errors"></span>
                     </fieldset>
                     <fieldset class="form-group">
-                        <label class="control-label" for="caption">Caption:</label>
-                        <input class="form-control" type="text" id="caption" name="caption" required data-error="Caption is Required" value="">
+                        <label class="control-label" for="description">Description:</label>
+                        <input class="form-control" type="text" id="description" name="description" required data-error="Description is Required" value="">
                         <span class="help-block with-errors"></span>
                     </fieldset>
                     <fieldset class="form-group">

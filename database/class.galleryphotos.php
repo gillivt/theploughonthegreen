@@ -6,7 +6,7 @@ require_once(LIB_PATH . DS . 'class.database.php');
 
 class GalleryPhotos extends DatabaseObject {
 
-    protected static $table_name = "galleryPhotos";
+    protected static $table_name = "galleryphotos";
     protected static $db_fields = array('id', 'filename', 'type', 'size', 'caption');
     public $id;
     public $filename;
@@ -14,7 +14,7 @@ class GalleryPhotos extends DatabaseObject {
     public $size;
     public $caption;
     private $temp_path;
-    protected $upload_dir = "assets/galleryImages";
+    protected $upload_dir = "assets/galleryimages";
     public $errors = array();
     protected $upload_errors = array(
         // http://www.php.net/manual/en/features.file-upload.errors.php

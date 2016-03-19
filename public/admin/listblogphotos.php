@@ -2,49 +2,43 @@
 <?php if (!$session->is_logged_in()) { redirect_to("login.php"); } ?>
 <?php
   // Find all the photos
-  $photos = GalleryPhotos::find_all();
+  $blogPhotos = BlogPhotos::find_all();
 ?>
 <?php include_layout_template('header.php'); ?>
 <main>
     <div class="container-fluid">
         <div class="row">
             <div class="col-sm-12">
-                <h2>Photographs</h2>
+                <h2>Blog Photographs</h2>
                 <?php echo output_message($message); ?>
                 <table class="table table-striped table-bordered table-responsive">
                     <tr>
                         <th>Image</th>
                         <th>Filename</th>
-                        <th>Caption</th>
+                        <th>Description</th>
                         <th>Size</th>
                         <th>Type</th>
-                        <th>Comments</th>
                         <th>&nbsp;</th>
                         <th>&nbsp;</th>
                     </tr>
-                    <?php foreach($photos as $photo): ?>
+                    <?php foreach($blogPhotos as $blogPhoto): ?>
                     <tr>
-                        <td><img src="../<?php echo $photo->image_path(); ?>" width="100" /></td>
-                        <td><?php echo $photo->filename; ?></td>
-                        <td><?php echo $photo->caption; ?></td>
-                        <td><?php echo $photo->size_as_text(); ?></td>
-                        <td><?php echo $photo->type; ?></td>
+                        <td><img src="../<?php echo $blogPhoto->image_path(); ?>" width="100" /></td>
+                        <td><?php echo $blogPhoto->filename; ?></td>
+                        <td><?php echo $blogPhoto->description; ?></td>
+                        <td><?php echo $blogPhoto->size_as_text(); ?></td>
+                        <td><?php echo $blogPhoto->type; ?></td>
                         <td>
-                            <a class="btn btn-info" role="button" href="comments.php?id=<?php echo $photo->id; ?>">
-				<?php echo count($photo->comments()); ?>
-                            </a>
+                            <a class="btn btn-danger" role="button" href="deleteblogphoto.php?id=<?php echo $blogPhoto->id; ?>">Delete</a>
                         </td>
                         <td>
-                            <a class="btn btn-danger" role="button" href="deletegalleryphoto.php?id=<?php echo $photo->id; ?>">Delete</a>
-                        </td>
-                        <td>
-                            <a class="btn btn-warning" role="button" href="editgalleryphoto.php?id=<?php echo $photo->id; ?>">Edit</a>
+                            <a class="btn btn-warning" role="button" href="editblogphoto.php?id=<?php echo $blogPhoto->id; ?>">Edit</a>
                         </td>
                     </tr>
                     <?php endforeach; ?>
                 </table>
                 <br>
-                <a class="btn btn-primary" role="button" href="galleryphotoupload.php">Upload a new photograph</a>
+                <a class="btn btn-primary" role="button" href="blogphotoupload.php">Upload a new photograph</a>
             </div>
         </div>
     </div>

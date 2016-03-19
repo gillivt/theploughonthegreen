@@ -8,8 +8,8 @@
 defined('DS') ? null : define('DS', DIRECTORY_SEPARATOR);
 
 defined('SITE_ROOT') ? null : 
-	define('SITE_ROOT', DS.'wamp'.DS.'www'.DS.'ThePloughOnTheGreen2');
-
+    define('SITE_ROOT', DS.'wamp'.DS.'www'.DS.'ThePloughOnTheGreen2');
+defined('WEB_ROOT') ? null : define('WEB_ROOT', '/ThePloughOnTheGreen2/public');
 defined('LIB_PATH') ? null : define('LIB_PATH', SITE_ROOT.DS.'database');
 
 // load config file first

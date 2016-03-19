@@ -4,17 +4,17 @@
 // probably smart to require it before we start.
 require_once(LIB_PATH . DS . 'class.database.php');
 
-class GalleryPhotos extends DatabaseObject {
+class BlogPhotos extends DatabaseObject {
 
-    protected static $table_name = "galleryPhotos";
-    protected static $db_fields = array('id', 'filename', 'type', 'size', 'caption');
+    protected static $table_name = "blogphotos";
+    protected static $db_fields = array('id', 'filename', 'type', 'size', 'description');
     public $id;
     public $filename;
     public $type;
     public $size;
-    public $caption;
+    public $description;
     private $temp_path;
-    protected $upload_dir = "assets/galleryImages";
+    protected $upload_dir = "assets/blogimages";
     public $errors = array();
     protected $upload_errors = array(
         // http://www.php.net/manual/en/features.file-upload.errors.php
@@ -53,7 +53,7 @@ class GalleryPhotos extends DatabaseObject {
     public function save() {
         // A new record won't have an id yet.
         if (isset($this->id)) {
-            // Really just to update the caption
+            // Really just to update the description
             $this->update();
         } else {
             // Make sure there are no errors
@@ -62,9 +62,9 @@ class GalleryPhotos extends DatabaseObject {
                 return false;
             }
 
-            // Make sure the caption is not too long for the DB
-            if (strlen($this->caption) > 255) {
-                $this->errors[] = "The caption can only be 255 characters long.";
+            // Make sure the description is not too long for the DB
+            if (strlen($this->description) > 255) {
+                $this->errors[] = "The description can only be 255 characters long.";
                 return false;
             }
 
@@ -131,9 +131,9 @@ class GalleryPhotos extends DatabaseObject {
         }
     }
 
-    public function comments() {
-        return Comment::find_comments_on($this->id);
-    }
+//    public function comments() {
+//        return Comment::find_comments_on($this->id);
+//    }
 
 }
 

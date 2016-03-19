@@ -7,13 +7,13 @@
     redirect_to('admin.php');
   }
 
-  $photo = GalleryPhotos::find_by_id($_GET['id']);
-  if($photo && $photo->destroy()) {
-    $session->message("The photo {$photo->filename} was deleted.");
-    redirect_to('listgalleryphotos.php');
+  $blogPhoto = BlogPhotos::find_by_id($_GET['id']);
+  if($blogPhoto && $blogPhoto->destroy()) {
+    $session->message("The photo {$blogPhoto->filename} was deleted.");
+    redirect_to('listblogphotos.php');
   } else {
     $session->message("The photo could not be deleted.");
-    redirect_to('listgalleryphotos.php');
+    redirect_to('listblogphotos.php');
   }
   
 ?>

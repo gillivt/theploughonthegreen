@@ -19,11 +19,30 @@ if (!$session->is_logged_in()) {
 }
 
 if (isset($_POST['submit'])) {
+    // Get form data
     $blogTitle = $db->escape_value($_POST['blogtitle']);
     $blogContent = $db->escape_value($_POST['blogcontent']);
     $blogImagePath = $_POST['imagesrc'];
     $linkTitle = isset($_POST['linktitle']) ? $db->escape_value($_POST['linktitle']) : "";
     $linkURL = isset($_POST['linkurl']) ? $db->escape_value($_POST['linkurl']) : "";
+    
+    // create blog object
+    $blog = new Blog();
+    $blog->blogTitle = $blogTitle;
+    $blog->blogContent = $blogContent;
+    $blog->imageURL = $blogImagePath;
+    $blog->linkTitle = $linkTitle;
+    $blog->linkAddress = $linkURL;
+    
+    if ($blog->save()) {
+        $session->message('Blog Created Successfully');
+        $user = User::find_by_id($session->user_id);
+        log_action("Blog Created", "By: ".$user->full_name());   
+        redirect_to('createblog.php');
+        
+    } else {
+        die('failed to create blog');
+    }
 }
 $images = scandir("../assets/blogimages");
 array_shift($images); //throw away current and previous dirs
@@ -36,6 +55,7 @@ include_layout_template("header.php");
         <div class="row">
             <div class="col-sm-12">
                 <h1>Create Blog</h1>
+                <?php echo output_message($message); ?>
                 <form id ="createblog" data-toggle="validator" action="" role="form" method="post">
                     <div class="form-group">
                         <label class="control-label" for="blogtitle">Blog Title:</label>
@@ -73,11 +93,20 @@ include_layout_template("header.php");
                     </div>
                     <div class="form-group">
                         <label class="control-label" for="linktitle">Link Title</label>
-                        <input type="text" class="form-control" name="linktitle" id="linktitle" placeholder="Optional Link Title (e.g. Google)">
+                        <input type="text" class="form-control"
+                               name="linktitle"
+                               value="link"
+                               id="linktitle" 
+                               placeholder="Optional Link Title (e.g. Google)">
                     </div>
                     <div class="form-group">
                         <label class="control-label" for="linkurl">Link Address</label>
-                        <input type="url" class="form-control" name="linkurl" id="linkurl" placeholder="Optional Link Address (e.g. http://www.google.co.uk)">
+                        <input type="url"
+                               class="form-control" 
+                               name="linkurl" id="linkurl" 
+                               placeholder="Optional Link Address (e.g. http://www.google.co.uk)"
+                               data-error="Must be a valid hyperink">
+                        <span class="help-block with-errors"></span>
                     </div>
                     <div class="form-group">
                         <input class="btn btn-primary" type="submit" name="submit" value="Create Blog">
@@ -89,32 +118,7 @@ include_layout_template("header.php");
 </main>
 
 <script src="../bootstrap-validator-master/dist/validator.min.js"></script>
-<script>
-    var validatorOptions = {
-        delay: 100,
-        custom: {
-            blog: function ($el) {
-                return ($el.val() !== "") ? true : false;
-            }
-        },
-        errors: {
-            blog: "Text Missing"
-        }
-    };
-    $("#createblog").validator(validatorOptions);
-</script>
 <script src="../assets/js/ddslick.js"></script>
-<script>
-    $('#imageurl').ddslick({
-        width: '100%',
-        onSelected: function(data){
-            console.log(data.selectedData.text);
-            console.log(data.selectedData.imageSrc);
-            $('#imagesrc').val(data.selectedData.imageSrc);
-        }
-    });
-</script>
-
 <script src="../assets/js/createblog.js"></script>
 <?php
 include_layout_template("footer.php");

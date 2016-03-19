@@ -74,7 +74,7 @@ include_layout_template("header.php");
                     </div>
                     <div class="row">
                         <div class="col-sm-12 col-md-4">
-                            <img class="img-responsive" src="<?php echo $blogEntry->imageURL ?>">
+                            <img class="img-responsive img-rounded" src="<?php echo WEB_ROOT.DS.'assets'.DS.'blogimages'.DS.$blogEntry->imageURL ?>">
                         </div>
                         <div class="col-sm-12 col-md-8">
                             <p><?php echo $blogEntry->blogContent ?></p>

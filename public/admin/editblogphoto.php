@@ -7,19 +7,19 @@
 //get or post?
 if (isset($_POST['submit'])) {
     //form has been submitted update photo caption
-    $caption = $database->escape_value($_POST['caption']);
+    $description = $database->escape_value($_POST['description']);
     $id = $_POST['id'];
-    $photo = GalleryPhotos::find_by_id($id);
-    $photo->caption = $caption;
-    $photo->save();
-    redirect_to('listgalleryphotos.php');
+    $blogPhoto = BlogPhotos::find_by_id($id);
+    $blogPhoto->description = $description;
+    $blogPhoto->save();
+    redirect_to('listblogphotos.php');
 } elseif (empty($_GET['id'])) {
     $session->message("No photograph ID was provided.");
     redirect_to('admin.php');
 }
 
-$photo = GalleryPhotos::find_by_id($_GET['id']);
-$photo_caption = $photo->caption;
+$blogPhoto = BlogPhotos::find_by_id($_GET['id']);
+$description = $blogPhoto->description;
 ?>
 <?php include_layout_template("header.php") ?>
 <main>
@@ -28,14 +28,14 @@ $photo_caption = $photo->caption;
             <div class="col-sm-12">
                 <h3>Edit Photo</h3>
                 <?php echo output_message($message); ?>
-                <form role="form" action="editgalleryphoto.php" method="post">
+                <form role="form" action="editblogphoto.php" method="post">
                     <div class="form-group">
-                        <label for="caption">Caption:</label>
-                        <input class="form-control" type="text" id="caption" name="caption" value="<?php echo $photo->caption; ?>">
-                        <input type="hidden" name="id" value="<?php echo $photo->id; ?>">
+                        <label for="caption">Description:</label>
+                        <input class="form-control" type="text" id="description" name="description" value="<?php echo $blogPhoto->description; ?>">
+                        <input type="hidden" name="id" value="<?php echo $blogPhoto->id; ?>">
                     </div>
                     <div class="form-group">
-                        <input class="btn btn-warning" type="submit" name="submit" value="Update Caption">
+                        <input class="btn btn-warning" type="submit" name="submit" value="Update Description">
                     </div>
                 </form>
             </div>

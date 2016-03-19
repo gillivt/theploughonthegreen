@@ -30,7 +30,7 @@ $user = User::find_by_id($session->user_id);
                         <a class="list-group-item list-group-item-info" href="logfile.php">View Log File</a>
                         <a class="list-group-item list-group-item-info" href="galleryphotoupload.php">Upload Photo To Gallery</a>
                         <a class="list-group-item list-group-item-info" href="listgalleryphotos.php">List Gallery Photos</a>
-                        <a class="list-group-item list-group-item-info" href="blogphotupload.php">Upload Photo to Blog Photo Library</a>
+                        <a class="list-group-item list-group-item-info" href="blogphotoupload.php">Upload Photo to Blog Photo Library</a>
                         <a class="list-group-item list-group-item-info" href="listblogphotos.php">List Blog Photo Library</a>
                         <a class="list-group-item list-group-item-info" href="createblog.php">Create Blog Entry</a>
                         <a class="list-group-item list-group-item-info" href="logout.php">Log Out / Sign Off / Auf Wieder Sehen / Au Revoir / 再见 / Arrivederci / Adiós</a>

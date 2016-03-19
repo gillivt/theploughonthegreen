@@ -33,7 +33,7 @@ if (isset($_POST['submit'])) {
     <div class="container-fluid">
         <div class="row">
             <div class="col-sm-12">
-                <h2>Photo Upload</h2>
+                <h2>Gallery Photo Upload</h2>
                 <?php echo output_message($message); ?>
                 <form id="uploadimage" data-toggle="validator" role="form" action="galleryphotoupload.php" enctype="multipart/form-data" method="POST">
                     <input type="hidden" name="MAX_FILE_SIZE" value="<?php echo $max_file_size; ?>">
