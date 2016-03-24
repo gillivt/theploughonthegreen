@@ -13,7 +13,7 @@
     redirect_to("comments.php?id={$comment->photograph_id}");
   } else {
     $session->message("The comment could not be deleted.");
-    redirect_to('list_photos.php');
+    redirect_to('listgalleryphotos.php');
   }
   
 ?>

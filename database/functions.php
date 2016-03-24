@@ -1,6 +1,11 @@
 <?php
 
-
+function esc_quot($fixstring = "") {
+    $temp = str_replace("'", "&rsquo;", $fixstring);
+    $temp2 = preg_replace('/(\")([ .,;:!])/', '&rdquo;$2', $temp);
+    $temp3 = str_replace(' "', ' &ldquo;', $temp2);
+    return $temp3;
+}
 
 function strip_zeros_from_date($marked_string = "") {
     // first remove the marked zeros

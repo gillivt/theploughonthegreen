@@ -26,14 +26,20 @@ $user = User::find_by_id($session->user_id);
                 <h1>Admin</h1>
                     Welcome <?php echo $user->full_name(); ?><br><br>
                     <?php echo output_message($message); ?><br><br>
+                    
                     <div class="list-group">
-                        <a class="list-group-item list-group-item-info" href="logfile.php">View Log File</a>
-                        <a class="list-group-item list-group-item-info" href="galleryphotoupload.php">Upload Photo To Gallery</a>
-                        <a class="list-group-item list-group-item-info" href="listgalleryphotos.php">List Gallery Photos</a>
-                        <a class="list-group-item list-group-item-info" href="blogphotoupload.php">Upload Photo to Blog Photo Library</a>
-                        <a class="list-group-item list-group-item-info" href="listblogphotos.php">List Blog Photo Library</a>
-                        <a class="list-group-item list-group-item-info" href="createblog.php">Create Blog Entry</a>
-                        <a class="list-group-item list-group-item-info" href="logout.php">Log Out / Sign Off / Auf Wieder Sehen / Au Revoir / 再见 / Arrivederci / Adiós</a>
+                        <a class="list-group-item list-group-item-info disabled" href="#">Log File</a>
+                        <a class="list-group-item list-group-item-warning" href="logfile.php"><span class="glyphicon glyphicon-eye-open"></span>&nbsp;&nbsp;View Log File</a>
+                        <a class="list-group-item list-group-item-info disabled" href="#">Gallery</a>
+                        <a class="list-group-item list-group-item-warning" href="galleryphotoupload.php"><span class="glyphicon glyphicon-cloud-upload"></span>&nbsp;&nbsp;Upload Photo To Gallery</a>
+                        <a class="list-group-item list-group-item-warning" href="listgalleryphotos.php"><span class="glyphicon glyphicon-list"></span>&nbsp;&nbsp;List Gallery Photos</a>
+                        <a class="list-group-item list-group-item-info disabled" href="#">Blog</a>
+                        <a class="list-group-item list-group-item-warning" href="blogphotoupload.php"><span class="glyphicon glyphicon-cloud-upload"></span>&nbsp;&nbsp;Upload Photo to Blog Photo Library</a>
+                        <a class="list-group-item list-group-item-warning" href="listblogphotos.php"><span class="glyphicon glyphicon-list"></span>&nbsp;&nbsp;List Blog Photos</a>
+                        <a class="list-group-item list-group-item-warning" href="createblog.php"><span class="glyphicon glyphicon-plus-sign"></span>&nbsp;&nbsp;Create Blog Entry</a>
+                        <a class="list-group-item list-group-item-warning" href="listblog.php"><span class="glyphicon glyphicon-list"></span>&nbsp;&nbsp;List Blog Entries</a>
+                        <a class="list-group-item list-group-item-info disabled" href="#">Admin Exit</a>
+                        <a class="list-group-item list-group-item-warning" href="logout.php"><span class="glyphicon glyphicon-off"></span>&nbsp;&nbsp;Log Out / Sign Off / Auf Wieder Sehen / Au Revoir / 再见 / Arrivederci / Adiós</a>
                     </div>
             </div>
         </div>

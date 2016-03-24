@@ -1,12 +1,13 @@
 <?php
 /*
- * File: createblog.php
+ * File: editblog.php
  * 
  * Copyright © 2016 Terry Gilliver <terry@comp-solutions.org.uk> - Computer Solutions
  * 
  * Created: 04-Mar-2016 20:44:55
  * 
- * Purpose: Create blog item
+ * Purpose: Edit blog item
+ * 
  * 
  * Modification History:
  * 
@@ -18,31 +19,43 @@ if (!$session->is_logged_in()) {
 }
 
 if (isset($_POST['submit'])) {
-
-    // Get form data
-    $blog = new Blog();
-    $blog->blogTitle = strip_tags($_POST['blogtitle']);
-    $blog->blogContent = strip_tags($_POST['blogcontent']);
-    $blog->imageURL = $_POST['imagesrc'];
-    $blog->linkTitle = isset($_POST['linktitle']) ? strip_tags($_POST['linktitle']) : "";
-    $blog->linkAddress = isset($_POST['linkurl']) ? strip_tags($_POST['linkurl']) : "";
+    //Get for data
+    $blogTitle = strip_tags($_POST['blogtitle']);
+    $blogContent = strip_tags($_POST['blogcontent']);
+    $blogImageUrl = $_POST['imagesrc'];
+    $blogLinkTitle = isset($_POST['linktitle']) ? strip_tags($_POST['linktitle']) : "";
+    $blogLinkAddress = isset($_POST['linkurl']) ? strip_tags($_POST['linkurl']) : "";
     date_default_timezone_set("Europe/London");
-    $blog->date = date('Y-m-d H:i:s');
-    
+    $blogDate = date('Y-m-d H:i:s');
+    //form has been submitted... update
+    $id = $_GET['id'];
+
+    $blog = Blog::find_by_id($id);
+    $blog->blogTitle = $blogTitle;
+    $blog->blogContent = $blogContent;
+    $blog->imageURL = $blogImageUrl;
+    $blog->linkTitle = $blogLinkTitle;
+    $blog->linkAddress = $blogLinkAddress;
+    $blog->date = $blogDate;
+   
     if ($blog->save()) {
-        $session->message("<div class='alert alert-success' role='alert'>Blog Created Successfully</div>");
+        $session->message("<div class='alert alert-success' role='alert'>Blog Updated Successfully</div>");
         $user = User::find_by_id($session->user_id);
-        log_action("Blog Created", "By: ".$user->full_name());   
-        redirect_to('createblog.php');
+        log_action("Blog Updated", "By: ".$user->full_name());   
+        redirect_to('editblog.php?id='.$id);
         
     } else {
-        $session->message("<div class='alert alert-danger' role='alert'>failed to create blog</div>");
-        redirect_to('createblog.php');
+        $session->message("<div class='alert alert-danger' role='alert'>Failed To Update Blog</div>");
+        redirect_to('editblog.php?id='.$id);
     }
+} elseif (empty($_GET['id'])) {
+    $session->message("<div class='alert alert-danger' role='alert'>no blog id was provided</div>");
+    redirect_to('admin.php');
 }
+
 // Get an array of images from blogphotos table
 $images = BlogPhotos::find_all();
-
+$blog = Blog::find_by_id($_GET['id']);
 include_layout_template("header.php");
 ?>
 
@@ -50,7 +63,7 @@ include_layout_template("header.php");
     <div class="container-fluid">
         <div class="row">
             <div class="col-sm-12">
-                <h1>Create Blog</h1>
+                <h1>Update Blog</h1>
                 <?php echo output_message($message); ?>
                 <form id ="createblog" data-toggle="validator" action="" role="form" method="post">
                     <div class="form-group">
@@ -61,7 +74,8 @@ include_layout_template("header.php");
                                placeholder="enter blog title" 
                                id="blogtitle"
                                data-error="You must enter a blog title"
-                               required>
+                               required 
+                               value="<?php echo $blog->blogTitle; ?>">
                         <span class="help-block with-errors"></span>
                     </div>
                     <div class="form-group">
@@ -71,7 +85,7 @@ include_layout_template("header.php");
                                   name="blogcontent" 
                                   id="blogcontent"
                                   data-blog="blog"
-                                  data-error="You must enter content for your blog"></textarea>
+                                  data-error="You must enter content for your blog"><?php echo $blog->blogContent; ?></textarea>
                         <span class="help-block with-errors"></span>
                     </div>
                     <div class="form-group">
@@ -79,7 +93,8 @@ include_layout_template("header.php");
                         <select id="imageurl" class="form-control">
                             <?php $i = 0;
                             foreach ($images as $image): ?>
-                                <option value="<?php echo $i ?>"
+                                <option <?php if ($blog->imageURL === $image->filename){echo "selected='selected'";} ?> 
+                                    value="<?php echo $i ?>"
                                         data-description="<?php echo $image->filename ?>"
                                         data-imagesrc="<?php echo "../assets/blogimages/" . $image->filename ?>"><?php echo $image->description ?>
                                 </option>
@@ -93,20 +108,22 @@ include_layout_template("header.php");
                         <input type="text" class="form-control"
                                name="linktitle"
                                id="linktitle" 
-                               placeholder="Optional Link Title (e.g. Google)">
+                               placeholder="Optional Link Title (e.g. Google)"
+                               value="<?php echo $blog->linkTitle; ?>">
                     </div>
                     <div class="form-group">
                         <label class="control-label" for="linkurl">Link Address</label>
                         <input type="url"
                                class="form-control" 
-                               name="linkurl" 
-                               id="linkurl" 
+                               name="linkurl" id="linkurl" 
                                placeholder="Optional Link Address (e.g. http://www.google.co.uk)"
-                               data-error="Must be a valid hyperink">
+                               data-error="Must be a valid hyperink"
+                               value="<?php echo $blog->linkAddress; ?>">
                         <span class="help-block with-errors"></span>
                     </div>
+                    <input type="hidden" name="id" value="<?php echo $blog->id; ?>">
                     <div class="form-group">
-                        <input class="btn btn-primary" type="submit" name="submit" value="Create Blog">
+                        <input class="btn btn-warning" type="submit" name="submit" value="Update Blog">
                     </div>
                 </form>
             </div>

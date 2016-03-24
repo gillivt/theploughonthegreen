@@ -1,9 +1,20 @@
 <?php
-
-// A class to help work with Sessions
-// In our case, primarily to manage logging users in and out
-// Keep in mind when working with sessions that it is generally 
-// inadvisable to store DB-related objects in sessions
+/*
+ * File: class.session.php
+ * 
+ * Copyright © 2016 Terry Gilliver <terry@comp-solutions.org.uk> - Computer Solutions
+ * 
+ * Created: 04-Mar-2016 20:44:55
+ * 
+ * Purpose: 
+ * A class to help work with Sessions
+ * In our case, primarily to manage logging users in and out
+ * Keep in mind when working with sessions that it is generally
+ * inadvisable to store DB-related objects in sessions
+ * 
+ * Modification History:
+ * 
+ */
 
 class Session {
 

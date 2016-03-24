@@ -44,6 +44,8 @@ $('#imageurl').ddslick({
         console.log("value: ",data.selectedData.value);
         console.log("description: ",data.selectedData.description);
         console.log("imageSrc: ",data.selectedData.imageSrc);
-        $('#imagesrc').val(data.selectedData.text);
+        $filename = data.selectedData.imageSrc.split('/').pop();
+        console.log("filename: ",$filename);
+        $('#imagesrc').val($filename);
     }
 });

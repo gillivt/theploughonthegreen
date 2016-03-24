@@ -61,7 +61,7 @@ include_layout_template("header.php");
                 </form> 
                 <br>
                 <?php foreach ($blog as $blogEntry): ?>
-                <a href="blogsearch.php?search=<?php echo $blogEntry->blogTitle ?>"><?php echo $blogEntry->blogTitle ?></a><br>
+                <a href="blogsearch.php?search=<?php echo $blogEntry->blogTitle ?>"><?php echo esc_quot($blogEntry->blogTitle) ?></a><br>
                 <?php endforeach; ?>
             </div>
           
@@ -69,15 +69,15 @@ include_layout_template("header.php");
                 <?php foreach ($blog as $blogEntry): ?>
                     <div class="row">
                         <div class="col-sm-12">
-                            <h1><?php echo $blogEntry->blogTitle ?></h1>
+                            <h1><?php echo esc_quot($blogEntry->blogTitle) ?></h1>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-sm-12 col-md-4">
-                            <img class="img-responsive img-rounded" src="<?php echo WEB_ROOT.DS.'assets'.DS.'blogimages'.DS.$blogEntry->imageURL ?>">
+                            <img class="img-responsive img-rounded" src="<?php echo WEB_ROOT.'/assets/blogimages/'.$blogEntry->imageURL ?>">
                         </div>
                         <div class="col-sm-12 col-md-8">
-                            <p><?php echo $blogEntry->blogContent ?></p>
+                            <p><?php echo nl2br(esc_quot($blogEntry->blogContent)) ?></p>
                             <a href="<?php echo $blogEntry->linkAddress ?>"><?php echo $blogEntry->linkTitle ?></a>
                         </div>
                     </div>
