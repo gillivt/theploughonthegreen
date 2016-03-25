@@ -22,9 +22,9 @@ $comments = $photo->comments();
 <main>
     <div class="container-fluid">
         <div class="row">
-            <div class="col-sm-12 text"><h1>Comments</h1>
-                <a class="btn btn-primary" role="button" href="listgalleryphotos.php">&laquo; Back</a><br><br>
-                <h2>Comments on <?php echo $photo->filename; ?></h2>
+            <div class="col-sm-12 text"><h3>Comments</h3>
+                <a class="btn btn-primary" role="button" href="listgalleryphotos.php"><span class="glyphicon glyphicon-circle-arrow-left"></span>&nbsp;&nbsp;Back</a><br><br>
+                <h4>Comments on <?php echo $photo->filename; ?></h4>
                 <?php echo output_message($message); ?>
                 <div id="comments">
                     <?php foreach ($comments as $comment): ?>
@@ -39,7 +39,7 @@ $comments = $photo->comments();
                             <?php echo datetime_to_text($comment->created); ?>
                         </div>
                         <div class="actions" style="font-size: 0.8em;">
-                            <a class="btn btn-danger" role="button" href="delete_comment.php?id=<?php echo $comment->id; ?>">Delete Comment</a>
+                            <a class="btn btn-danger" role="button" href="delete_comment.php?id=<?php echo $comment->id; ?>"><span class="glyphicon glyphicon-trash"></span>&nbsp;&nbsp;Delete Comment</a>
                         </div>
                     </div>
                     <?php endforeach; ?>

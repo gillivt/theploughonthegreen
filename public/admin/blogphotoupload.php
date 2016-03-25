@@ -29,6 +29,7 @@ if (isset($_POST['submit'])) {
 ?>
 
 <?php include_layout_template('header.php'); ?>
+
 <main>
     <div class="container-fluid">
         <div class="row">
@@ -48,7 +49,7 @@ if (isset($_POST['submit'])) {
                         <span class="help-block with-errors"></span>
                     </fieldset>
                     <fieldset class="form-group">
-                        <input class="btn btn-primary" type="submit" name="submit" value="Upload" />
+                        <span class="icon-input-btn"><span class="glyphicon glyphicon-cloud-upload"></span><input class="btn btn-primary" type="submit" name="submit" value="Upload" /></span>
                     </fieldset>
                 </form>
             </div>

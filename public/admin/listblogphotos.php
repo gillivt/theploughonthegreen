@@ -29,16 +29,16 @@
                         <td><?php echo $blogPhoto->size_as_text(); ?></td>
                         <td><?php echo $blogPhoto->type; ?></td>
                         <td>
-                            <a class="btn btn-danger" role="button" href="deleteblogphoto.php?id=<?php echo $blogPhoto->id; ?>">Delete</a>
+                            <a class="btn btn-danger" role="button" href="deleteblogphoto.php?id=<?php echo $blogPhoto->id; ?>"><span class="glyphicon glyphicon-trash"></span>&nbsp;&nbsp;Delete</a>
                         </td>
                         <td>
-                            <a class="btn btn-warning" role="button" href="editblogphoto.php?id=<?php echo $blogPhoto->id; ?>">Edit</a>
+                            <a class="btn btn-warning" role="button" href="editblogphoto.php?id=<?php echo $blogPhoto->id; ?>"><span class="glyphicon glyphicon-pencil"></span>&nbsp;&nbsp;Edit</a>
                         </td>
                     </tr>
                     <?php endforeach; ?>
                 </table>
                 <br>
-                <a class="btn btn-primary" role="button" href="blogphotoupload.php">Upload a new photograph</a>
+                <a class="btn btn-primary" role="button" href="blogphotoupload.php"><span class="glyphicon glyphicon-cloud-upload"></span>&nbsp;&nbsp;Upload a new photograph</a>
             </div>
         </div>
     </div>

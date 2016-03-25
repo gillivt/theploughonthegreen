@@ -23,10 +23,10 @@ include_layout_template("header.php");
     <div class="container-fluid">
         <div class="row">
             <div class="col-sm-12">
-                <a class="btn btn-primary" role="button" href="admin.php">&laquo; Back</a><br />
+                <a class="btn btn-primary" role="button" href="admin.php"><span class="glyphicon glyphicon-circle-arrow-left"></span>&nbsp;&nbsp;Back</a><br />
                 <br />
                 <h2>Log File</h2>
-                <p><a class="btn btn-primary" role="button" href="logfile.php?clear=true">Clear log file</a><p>
+                <p><a class="btn btn-danger" role="button" href="logfile.php?clear=true"><span class="glyphicon glyphicon-trash"></span>&nbsp;&nbsp;Clear log file</a><p>
                 <?php
                 if (file_exists($logfile) && is_readable($logfile) &&
                     $handle = fopen($logfile, 'r')) {  // read

@@ -1,13 +1,13 @@
 <?php require_once("../database/initialize.php"); ?>
 <?php
 if (empty($_GET['id'])) {
-    $session->message("No photograph ID was provided.");
+    $session->message("<div class='alert alert-danger'><span class='glyphicon glyphicon-warning-sign'></span>&nbsp&nbsp;No Photograph ID Was Provided.</div>");
     redirect_to('gallery.php');
 }
 
 $photo = GalleryPhotos::find_by_id($_GET['id']);
 if (!$photo) {
-    $session->message("The photo could not be located.");
+    $session->message("<div class='alert alert-danger'><span class='glyphicon glyphicon-warning-sign'></span>&nbsp&nbsp;The Photo Could Not Be Located.</div>");
     redirect_to('gallery.php');
 }
 
@@ -28,7 +28,7 @@ if (isset($_POST['submit'])) {
         redirect_to("photo.php?id={$photo->id}");
     } else {
         // Failed
-        $message = "There was an error that prevented the comment from being saved.";
+        $message = "<div class='alert alert-danger'><span class='glyphicon glyphicon-warning-sign'></span>&nbsp&nbsp;There was an error that prevented the comment from being saved.</div>";
     }
 } else {
     $author = "";
@@ -42,7 +42,7 @@ $comments = $photo->comments();
     <div class="container-fluid">
         <div class="row">
             <div class="col-sm-12 col-md-8"> 
-                <a href="gallery.php"class="btn btn-primary" role="button">&laquo; Back</a><br><br>
+                <a href="gallery.php"class="btn btn-primary" role="button"><span class="glyphicon glyphicon-circle-arrow-left"></span>&nbsp;&nbsp;Back</a><br><br>
                 <div style="margin-left: 20px;">
                     <img class="img-responsive img-rounded" src="<?php echo $photo->image_path(); ?>" />
                     <p><?php echo $photo->caption; ?></p>
@@ -82,7 +82,7 @@ $comments = $photo->comments();
                             <span class="help-block with-errors"></span>
                         </div>
                         <div class="form-group">
-                            <input class="btn btn-primary" type="submit" name="submit" value="Submit Comment" />
+                            <span class="icon-input-btn"><span class="glyphicon glyphicon-ok-sign"></span><input class="btn btn-primary" type="submit" name="submit" value="Submit Comment" /></span>
                         </div>
                     </form>
                 </div>

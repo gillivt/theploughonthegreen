@@ -35,7 +35,7 @@ $photo_caption = $photo->caption;
                         <input type="hidden" name="id" value="<?php echo $photo->id; ?>">
                     </div>
                     <div class="form-group">
-                        <input class="btn btn-warning" type="submit" name="submit" value="Update Caption">
+                        <span class="icon-input-btn"><span class="glyphicon glyphicon-cloud-upload"></span><input class="btn btn-warning" type="submit" name="submit" value="Update Caption"></span>
                     </div>
                 </form>
             </div>

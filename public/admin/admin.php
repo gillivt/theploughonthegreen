@@ -23,9 +23,8 @@ $user = User::find_by_id($session->user_id);
     <div class="container-fluid">
         <div class="row">
             <div class="col-sm-12">
-                <h1>Admin</h1>
-                    Welcome <?php echo $user->full_name(); ?><br><br>
-                    <?php echo output_message($message); ?><br><br>
+                <h2>Admin</h2>
+                    <?php echo output_message($message); ?>
                     
                     <div class="list-group">
                         <a class="list-group-item list-group-item-info disabled" href="#">Log File</a>

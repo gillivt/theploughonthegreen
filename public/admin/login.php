@@ -14,10 +14,12 @@ if (isset($_POST['submit'])) { // Form has been submitted.
     if ($found_user) {
         $session->login($found_user);
         log_action('Login', "{$found_user->username} logged in.");
+        $ucLogin = ucfirst($found_user->username);
+        $session->message("<div class='alert alert-success'><span class='glyphicon glyphicon-ok-sign'></span>&nbsp&nbsp;Welcome " . $ucLogin . "</div>");
         redirect_to("admin.php");
     } else {
         // username/password combo was not found in the database
-        $message = "Username/password combination incorrect.";
+        $message = "<div class='alert alert-danger'><span class='glyphicon glyphicon-warning-sign'></span>&nbsp&nbsp;Username/password combination incorrect.</div>";
     }
 } else { // Form has not been submitted.
     $username = "";
@@ -62,7 +64,7 @@ Modification History:
                         <span class="help-block with-errors"></span>
                     </div>
                     <div class="form-group">
-                        <input class="btn btn-primary" type="submit" name="submit" value="Login">
+                        <span class="icon-input-btn"><span class="glyphicon glyphicon-log-in"></span><input class="btn btn-primary" type="submit" name="submit" value="Login"></span>
                     </div>
                 </form>
             </div>        

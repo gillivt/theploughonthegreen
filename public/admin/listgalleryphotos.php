@@ -30,21 +30,21 @@
                         <td><?php echo $photo->size_as_text(); ?></td>
                         <td><?php echo $photo->type; ?></td>
                         <td>
-                            <a class="btn btn-info" role="button" href="comments.php?id=<?php echo $photo->id; ?>">
+                            <a class="btn btn-info" role="button" href="comments.php?id=<?php echo $photo->id; ?>"><span class="glyphicon glyphicon-eye-open"></span>&nbsp;&nbsp;
 				<?php echo count($photo->comments()); ?>
                             </a>
                         </td>
                         <td>
-                            <a class="btn btn-danger" role="button" href="deletegalleryphoto.php?id=<?php echo $photo->id; ?>">Delete</a>
+                            <a class="btn btn-danger" role="button" href="deletegalleryphoto.php?id=<?php echo $photo->id; ?>"><span class="glyphicon glyphicon-trash"></span>&nbsp;&nbsp;Delete</a>
                         </td>
                         <td>
-                            <a class="btn btn-warning" role="button" href="editgalleryphoto.php?id=<?php echo $photo->id; ?>">Edit</a>
+                            <a class="btn btn-warning" role="button" href="editgalleryphoto.php?id=<?php echo $photo->id; ?>"><span class="glyphicon glyphicon-pencil"></span>&nbsp;&nbsp;Edit</a>
                         </td>
                     </tr>
                     <?php endforeach; ?>
                 </table>
                 <br>
-                <a class="btn btn-primary" role="button" href="galleryphotoupload.php">Upload a new photograph</a>
+                <a class="btn btn-primary" role="button" href="galleryphotoupload.php"><span class="glyphicon glyphicon-cloud-upload"></span>&nbsp;&nbsp;Upload a new photograph</a>
             </div>
         </div>
     </div>

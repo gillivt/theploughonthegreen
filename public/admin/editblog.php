@@ -123,7 +123,7 @@ include_layout_template("header.php");
                     </div>
                     <input type="hidden" name="id" value="<?php echo $blog->id; ?>">
                     <div class="form-group">
-                        <input class="btn btn-warning" type="submit" name="submit" value="Update Blog">
+                        <span class="icon-input-btn"><span class="glyphicon glyphicon-cloud-upload"></span><input class="btn btn-warning" type="submit" name="submit" value="Update Blog"></span>
                     </div>
                 </form>
             </div>

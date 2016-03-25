@@ -37,7 +37,7 @@ Modification History:
                             <span class="help-block with-errors"></span>
                         </div>
                         <div class="form-group">
-                            <input type="submit" class="btn btn-primary" value="Get Directions" id="button"><br>
+                            <span class="icon-input-btn"><span class="glyphicon glyphicon-road"></span><input type="submit" class="btn btn-primary" value="Get Directions" id="button"></span><br>
                         </div>
                     </fieldset>
                 </form>

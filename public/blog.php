@@ -44,6 +44,7 @@ include_layout_template("header.php");
             </div>
           
             <div id="blogsearch" class="col-sm-0 col-md-2">
+                <?php echo output_message($message); ?>
                 <form method="GET" action="blogsearch.php" role="search">
                     <div class="input-group">
                         <input data-toggle="tooltip" 

@@ -106,7 +106,7 @@ include_layout_template("header.php");
                         <span class="help-block with-errors"></span>
                     </div>
                     <div class="form-group">
-                        <input class="btn btn-primary" type="submit" name="submit" value="Create Blog">
+                        <span class="icon-input-btn"><span class="glyphicon glyphicon-plus-sign"></span><input class="btn btn-primary" type="submit" name="submit" value="Create Blog"></span>
                     </div>
                 </form>
             </div>

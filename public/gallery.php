@@ -19,7 +19,7 @@ $pagination = new Pagination($page, $per_page, $total_count);
 
 // Instead of finding all records, just find the records 
 // for this page
-$sql = "SELECT * FROM galleryPhotos ";
+$sql = "SELECT * FROM galleryphotos ";
 $sql .= "LIMIT {$per_page} ";
 $sql .= "OFFSET {$pagination->offset()}";
 $photos = GalleryPhotos::find_by_sql($sql);
@@ -66,7 +66,7 @@ Modification History:
                         if ($pagination->has_previous_page()) {
                             echo "<a class=\"btn btn-primary\" role=\"button\" href=\"gallery.php?page=";
                             echo $pagination->previous_page();
-                            echo "\">&laquo; Previous</a> ";
+                            echo "\"><span class='glyphicon glyphicon-circle-arrow-left'></span>&nbsp;&nbsp;Previous</a> ";
                         }
 
                         for ($i = 1; $i <= $pagination->total_pages(); $i++) {
@@ -80,7 +80,7 @@ Modification History:
                         if ($pagination->has_next_page()) {
                             echo " <a class=\"btn btn-primary\" role=\"button\" href=\"gallery.php?page=";
                             echo $pagination->next_page();
-                            echo "\">Next &raquo;</a> ";
+                            echo "\">Next&nbsp;&nbsp;<span class='glyphicon glyphicon-circle-arrow-right'></span></a> ";
                         }
                     }
                     ?>

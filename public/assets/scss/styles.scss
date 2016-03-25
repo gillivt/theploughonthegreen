@@ -143,3 +143,19 @@ table, tr, td, tr {
 #datetimepicker1 {
     margin: 0 -15px 0 -15px;
 }
+
+
+.icon-input-btn{
+    display: inline-block;
+    position: relative;
+}
+.icon-input-btn input[type="submit"]{
+    padding-left: 2em;
+}
+.icon-input-btn .glyphicon{
+    display: inline-block;
+    position: absolute;
+    color: white;
+    left: 0.65em;
+    top: 30%;
+}

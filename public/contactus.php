@@ -22,6 +22,7 @@ if (isset($_POST['submit'])) {
     $mail->AddReplyTo($email);
     $mail->From = "web@theploughonthegreen.co.uk";
     $mail->AddAddress("terry@mrtaxsoftware.com", "Contact Us Page");
+    $mail->AddAddress("bob@theploughonthegreen.co.uk", "Contact Us Page");
     $mail->Subject = $subject;
 
     $mail->Body = <<<EMAILBODY
@@ -36,10 +37,11 @@ EMAILBODY;
 
     $result = $mail->Send();
     if(!$result) {
-        $session->message("Failed to Send Mail ".$result);
+        
+        $session->message("<div class='alert alert-danger'><span class='glyphicon glyphicon-warning-sign'></span>&nbsp&nbsp;Failed To Send Mail {$result}</div>");
         log_action("Failed to send email","by {$email}");
     } else {
-        $session->message("Mail Sent Successfully");
+        $session->message("<div class='alert alert-success'><span class='glyphicon glyphicon-ok-sign'></span>&nbsp&nbsp;Mail Sent Successfully.</div>");
         log_action("Contact Us email sent", "by {$email}");
     }
     redirect_to("contactus.php");
@@ -100,7 +102,7 @@ Modification History:
                         <div class="help-block with-errors"></div>
                     </div>
                     <div class="form-group">
-                        <input class="btn btn-primary" type="submit" name="submit"  value="Send Email">
+                        <span class="icon-input-btn"><span class="glyphicon glyphicon-envelope"></span><input class="btn btn-primary" type="submit" name="submit" value="Send Email"></span>
                     </div>
                 </form>
                 
