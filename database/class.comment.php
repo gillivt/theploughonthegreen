@@ -51,9 +51,10 @@ class Comment extends DatabaseObject {
         $mail->AddAddress("bob@theploughonthegreen.co.uk", "Photo Gallery Admin");
         $mail->Subject = "New Photo Gallery Comment";
         $created = datetime_to_text($this->created);
+        $photo = GalleryPhotos::find_by_id($this->photograph_id);
         $mail->Body = <<<EMAILBODY
 
-A new comment has been received in the Photo Gallery.
+A new comment about '{$photo->caption}' has been received in the Photo Gallery.
 
   At {$created}, {$this->author} wrote:
 
