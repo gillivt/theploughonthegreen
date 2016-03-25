@@ -48,7 +48,7 @@ class Comment extends DatabaseObject {
 
         $mail->FromName = "Photo Gallery";
         $mail->From = "web@theploughonthegreen.co.uk";
-        $mail->AddAddress("terry@mrtaxsoftware.com", "Photo Gallery Admin");
+        $mail->AddAddress("bob@theploughonthegreen.co.uk", "Photo Gallery Admin");
         $mail->Subject = "New Photo Gallery Comment";
         $created = datetime_to_text($this->created);
         $mail->Body = <<<EMAILBODY
