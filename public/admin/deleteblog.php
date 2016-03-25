@@ -3,7 +3,7 @@
 <?php
 	// must have an ID
   if(empty($_GET['id'])) {
-  	$session->message("No blog ID was provided.");
+        $session->message("<div class='alert alert-danger'><span class='glyphicon glyphicon-warning-sign'></span>&nbsp&nbsp;No blog ID was provided.</div>");
     redirect_to('admin.php');
   }
 
