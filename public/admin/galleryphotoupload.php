@@ -5,7 +5,7 @@ if (!$session->is_logged_in()) {
 }
 ?>
 <?php
-$max_file_size = 2097152;   // expressed in bytes (2MB)
+$max_file_size = 10485760;   // expressed in bytes (10MB)
 //     10240 =  10 KB
 //    102400 = 100 KB
 //   1048576 =   1 MB
@@ -16,8 +16,8 @@ if (isset($_POST['submit'])) {
     $photo->caption = $_POST['caption'];
     $photo->attach_file($_FILES['file_upload']);
     if ($photo->save()) {
-        // Success        
-        $session->message("Photograph uploaded successfully.");
+        // Success
+        $session->message("<div class='alert alert-success'><span class='glyphicon glyphicon-ok-sign'></span>&nbsp&nbsp;Photograph Uploaded Successfully.</div>");
         $user = User::find_by_id($session->user_id);
         log_action("Image Uploaded ".$photo->filename, "By: ".$user->full_name());   
         redirect_to('listgalleryphotos.php');
