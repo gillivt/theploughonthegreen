@@ -29,6 +29,9 @@ $user = User::find_by_id($session->user_id);
                     <div class="list-group">
                         <a class="list-group-item list-group-item-info disabled" href="#">Log File</a>
                         <a class="list-group-item list-group-item-warning" href="logfile.php"><span class="glyphicon glyphicon-eye-open"></span>&nbsp;&nbsp;View Log File</a>
+                        <a class="list-group-item list-group-item-info disabled" href="#">Menu</a>
+                        <a class="list-group-item list-group-item-warning" href="menuphotoupload.php"><span class="glyphicon glyphicon-cloud-upload"></span>&nbsp;&nbsp;Upload Photo To Menus</a>
+                        <a class="list-group-item list-group-item-warning" href="listmenuphotos.php"><span class="glyphicon glyphicon-list"></span>&nbsp;&nbsp;List Menu Photos</a>
                         <a class="list-group-item list-group-item-info disabled" href="#">Gallery</a>
                         <a class="list-group-item list-group-item-warning" href="galleryphotoupload.php"><span class="glyphicon glyphicon-cloud-upload"></span>&nbsp;&nbsp;Upload Photo To Gallery</a>
                         <a class="list-group-item list-group-item-warning" href="listgalleryphotos.php"><span class="glyphicon glyphicon-list"></span>&nbsp;&nbsp;List Gallery Photos</a>
