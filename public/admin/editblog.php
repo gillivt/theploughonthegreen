@@ -42,7 +42,7 @@ if (isset($_POST['submit'])) {
         $session->message("<div class='alert alert-success' role='alert'>Blog Updated Successfully</div>");
         $user = User::find_by_id($session->user_id);
         log_action("Blog Updated", "By: ".$user->full_name());   
-        redirect_to('editblog.php?id='.$id);
+        redirect_to('listblog.php');
         
     } else {
         $session->message("<div class='alert alert-danger' role='alert'>Failed To Update Blog</div>");
@@ -50,7 +50,7 @@ if (isset($_POST['submit'])) {
     }
 } elseif (empty($_GET['id'])) {
     $session->message("<div class='alert alert-danger' role='alert'>no blog id was provided</div>");
-    redirect_to('admin.php');
+    redirect_to('listblog.php');
 }
 
 // Get an array of images from blogphotos table
@@ -65,7 +65,7 @@ include_layout_template("header.php");
             <div class="col-sm-12">
                 <h1>Update Blog</h1>
                 <?php echo output_message($message); ?>
-                <form id ="createblog" data-toggle="validator" action="" role="form" method="post">
+                <form id ="createblog" data-toggle="validator" action="editblog?id='<?php echo $blog->id ?>'" role="form" method="post">
                     <div class="form-group">
                         <label class="control-label" for="blogtitle">Blog Title:</label>
                         <input class="form-control" 
@@ -121,7 +121,6 @@ include_layout_template("header.php");
                                value="<?php echo $blog->linkAddress; ?>">
                         <span class="help-block with-errors"></span>
                     </div>
-                    <input type="hidden" name="id" value="<?php echo $blog->id; ?>">
                     <div class="form-group">
                         <span class="icon-input-btn"><span class="glyphicon glyphicon-cloud-upload"></span><input class="btn btn-warning" type="submit" name="submit" value="Update Blog"></span>
                     </div>

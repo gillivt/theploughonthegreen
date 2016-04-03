@@ -118,7 +118,7 @@ include_layout_template("header.php");
     </div>
 </main>
 
-<script src="assets/js/news.js"></script>
+<script src="assets/js/blog.js"></script>
 <?php
 include_layout_template("footer.php");
 ?>

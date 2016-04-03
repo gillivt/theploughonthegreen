@@ -1,21 +1,20 @@
 <?php
 require_once("../database/initialize.php");
 include_layout_template("header.php");
+
+/* File: index.php
+ *
+ * Copyright © 2016 Terry Gilliver <terry@comp-solutions.org.uk> - Computer Solutions
+ *
+ * Created: 26-Jan-2016 16:41:31
+ * 
+ * Purpose: Home Page
+ *
+ * Modification History:
+ *
+ * 
+ */
 ?>
-<!--
-File: index.php
-
-Copyright © 2016 Terry Gilliver <terry@comp-solutions.org.uk> - Computer Solutions
-
-Created: 26-Jan-2016 16:41:31
-
-Purpose: Home Page
-
-
-Modification History:
-
--->
-
 <main>
     <div class="container-fluid">
         <div class="row">

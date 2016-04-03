@@ -30,6 +30,7 @@ $menus = MenuPhotos::find_all()
             <div class="col-sm-12 col-md-11"><h1>Menus</h1>
             <?php foreach ($menus as $menu):?>
                 <img src="<?php echo WEB_ROOT.'/assets/menuimages/'.$menu->filename; ?>">
+                <hr>
             <?php endforeach; ?>   
             </div>            
 

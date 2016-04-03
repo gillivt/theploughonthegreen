@@ -1,10 +1,15 @@
 <?php
 
 function esc_quot($fixstring = "") {
-    $temp = str_replace("'", "&rsquo;", $fixstring);
-    $temp2 = preg_replace('/(\")([ .,;:!])/', '&rdquo;$2', $temp);
-    $temp3 = str_replace(' "', ' &ldquo;', $temp2);
-    return $temp3;
+    $temp = preg_replace('/^\'/', '&lsquo;', $fixstring);
+    $temp2 = preg_replace('/\'$/', '&rsquo;', $temp);
+    $tempx = preg_replace('/ \'/', ' &lsquo;', $temp2);
+    $temp3 = str_replace('\'', '&rsquo;', $tempx);
+    $temp4 = preg_replace('/^\"/', '&ldquo;', $temp3);
+    $temp5 = preg_replace('/\"$/', '&rdquo;', $temp4);
+    $temp6 = preg_replace('/(\")([ .,;:!])/', '&rdquo;$2', $temp5);
+    $temp7 = preg_replace('/ \"/', ' &ldquo;', $temp6);
+    return $temp7;
 }
 
 function strip_zeros_from_date($marked_string = "") {

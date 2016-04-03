@@ -40,6 +40,9 @@ $user = User::find_by_id($session->user_id);
                         <a class="list-group-item list-group-item-warning" href="listblogphotos.php"><span class="glyphicon glyphicon-list"></span>&nbsp;&nbsp;List Blog Photos</a>
                         <a class="list-group-item list-group-item-warning" href="createblog.php"><span class="glyphicon glyphicon-plus-sign"></span>&nbsp;&nbsp;Create Blog Entry</a>
                         <a class="list-group-item list-group-item-warning" href="listblog.php"><span class="glyphicon glyphicon-list"></span>&nbsp;&nbsp;List Blog Entries</a>
+                        <a class="list-group-item list-group-item-info disabled" href="#">Testimonals</a>
+                        <a class="list-group-item list-group-item-warning" href="createtestimonial.php"><span class="glyphicon glyphicon-plus-sign"></span>&nbsp;&nbsp;Create Customer Comment / Testimonial</a>
+                        <a class="list-group-item list-group-item-warning" href="listtestimonials.php"><span class="glyphicon glyphicon-list"></span>&nbsp;&nbsp;List Customer Comments / Testimonials</a>
                         <a class="list-group-item list-group-item-info disabled" href="#">Admin Exit</a>
                         <a class="list-group-item list-group-item-warning" href="logout.php"><span class="glyphicon glyphicon-off"></span>&nbsp;&nbsp;Log Out / Sign Off / Auf Wieder Sehen / Au Revoir / 再见 / Arrivederci / Adiós</a>
                     </div>
